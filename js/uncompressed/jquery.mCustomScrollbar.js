@@ -1322,7 +1322,8 @@ and dependencies (minified).
 						if(!touchAction){e.preventDefault();} 
 						touchDrag=1;
 					}else{
-                        if (!window.pointerEvents) {
+                        if (!window.PointerEvent) {
+                        console.log("No pointerEvents");
 						docDrag=1;
 						$this.addClass("mCS_touch_action");
                         }
