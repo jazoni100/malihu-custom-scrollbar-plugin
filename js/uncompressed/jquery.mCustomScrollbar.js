@@ -1290,7 +1290,7 @@ and dependencies (minified).
 				});
 			}
 			function _onTouchstart(e){
-				if(!_pointerTouch(e) || !window.PointerEvent || touchActive || _coordinates(e)[2]){touchable=0; return;}
+				if(!_pointerTouch(e) || touchActive || _coordinates(e)[2]){touchable=0; return;}
 				touchable=1; touchDrag=0; docDrag=0; draggable=1;
 				$this.removeClass("mCS_touch_action");
 				var offset=mCSB_container.offset();
@@ -1299,7 +1299,7 @@ and dependencies (minified).
 				touchIntent=[_coordinates(e)[0],_coordinates(e)[1]];
 			}
 			function _onTouchmove(e){
-				if(!_pointerTouch(e) || !window.PointerEvent || touchActive || _coordinates(e)[2]){return;}
+				if(!_pointerTouch(e) || touchActive || _coordinates(e)[2]){return;}
 				if(!o.documentTouchScroll){e.preventDefault();} 
 				e.stopImmediatePropagation();
 				if(docDrag && !touchDrag){return;}
@@ -1322,8 +1322,10 @@ and dependencies (minified).
 						if(!touchAction){e.preventDefault();} 
 						touchDrag=1;
 					}else{
-						//docDrag=1;
-						//$this.addClass("mCS_touch_action");
+                        if (!window.pointerEvents) {
+						docDrag=1;
+						$this.addClass("mCS_touch_action");
+                        }
 					}
 					if(touchAction){e.preventDefault();} 
 					amount=o.axis==="yx" ? [(dragY-y),(dragX-x)] : o.axis==="x" ? [null,(dragX-x)] : [(dragY-y),null];
@@ -1333,7 +1335,7 @@ and dependencies (minified).
 				}
 			}
 			function _onTouchstart2(e){
-				if(!_pointerTouch(e) || !window.PointerEvent || touchActive || _coordinates(e)[2]){touchable=0; return;}
+				if(!_pointerTouch(e)  || touchActive || _coordinates(e)[2]){touchable=0; return;}
 				touchable=1;
 				e.stopImmediatePropagation();
 				_stop($this);
@@ -1344,7 +1346,6 @@ and dependencies (minified).
 				touchMoveY=[]; touchMoveX=[];
 			}
 			function _onTouchend(e){
-				if(!_pointerTouch(e) || !window.PointerEvent || touchActive || _coordinates(e)[2]){return;}
 				draggable=0;
 				e.stopImmediatePropagation();
 				touchDrag=0; docDrag=0;
