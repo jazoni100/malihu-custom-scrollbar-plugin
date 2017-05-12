@@ -1322,8 +1322,8 @@ and dependencies (minified).
 						if(!touchAction){e.preventDefault();} 
 						touchDrag=1;
 					}else{
-						//docDrag=1;
-						//$this.addClass("mCS_touch_action");
+						docDrag=1;
+						$this.addClass("mCS_touch_action");
 					}
 					if(touchAction){e.preventDefault();} 
 					amount=o.axis==="yx" ? [(dragY-y),(dragX-x)] : o.axis==="x" ? [null,(dragX-x)] : [(dragY-y),null];
