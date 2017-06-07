@@ -54,7 +54,7 @@ function get_browser() {
     };
  }
 
-console.log(get_browser());
+var browser=get_browser();
 
 (function(factory){
 	if(typeof define==="function" && define.amd){
@@ -1342,8 +1342,9 @@ console.log(get_browser());
 						if(!touchAction){e.preventDefault();} 
 						touchDrag=1;
 					}else{
-                        if (!window.PointerEvent) {
-                        console.log("No pointerEvents");
+                        if (browser.name == "Chrome" && browser.version > 56) {
+                        console.log("Chrome 56 up");
+                        } else {
 						docDrag=1;
 						$this.addClass("mCS_touch_action");
                         }
