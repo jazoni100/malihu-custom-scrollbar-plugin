@@ -36,7 +36,7 @@ the production-ready jquery.mCustomScrollbar.concat.min.js which contains the pl
 and dependencies (minified). 
 */
 
-unction get_browser() {
+function get_browser() {
     var ua=navigator.userAgent,tem,M=ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || []; 
     if(/trident/i.test(M[1])){
         tem=/\brv[ :]+(\d+)/g.exec(ua) || []; 
